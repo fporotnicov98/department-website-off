@@ -1,0 +1,96 @@
+.header {
+    padding: 10px;
+    background: rgba(5, 3, 129, 1);
+    width: 100%;
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        .header__row {
+            display: flex;
+            // justify-content: space-between;
+            align-items: center;
+            .logo {
+                flex: 0 0 130px;
+                img {
+                    max-height: 55px;
+                }
+            }
+            .title {
+                flex: 1 1 auto;
+                font-weight: bold;
+                font-size: 20px;
+                line-height: 24px;
+                color: #ffffff;
+                text-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+            }
+            .menu {
+                flex: 0 0 650px;
+                text-align: right;
+                .burger {
+                    &:hover {
+                        .sub-menu {
+                            display: block;
+                        }
+                    }
+                    .sub-menu {
+                        display: none;
+                        position: absolute;
+                        top: 10px;
+                        padding: 20px 0 0 0;
+                        min-width: 180px;
+                        right: -85px;
+                        text-align: center;
+                        a {
+                            padding: 11px 10px;
+                            display: inline-block;
+                            &:hover {
+                                color: #000;
+                            }
+                        }
+                        >li {
+                            background: rgba(159, 158, 180, 1);
+                            border-radius: 5px 5px 0 0;
+                            &:last-child {
+                                margin: 0;
+                                border-radius: 0 0 5px 5px;
+                            }
+                        }
+                    }
+                }
+                li {
+                    position: relative;
+                }
+                > li {
+                    padding-left: 25px;
+                    font-weight: bold;
+                    font-size: 15px;
+                    line-height: 17px;
+                    display: inline-block;
+                    color: #fff;
+                    a {
+                        color: #fff;
+                        &.active-link {
+                            color: #afc2d6;
+                        }
+                    }
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        width: 6px;
+                        height: 6px;
+                        margin-right: 25px;
+                        border-radius: 50%;
+                        background: #fff;
+                    }
+                    &:first-child::before {
+                        margin: 0;
+                        display: inline;
+                    }
+                }
+            }
+        }
+    }
+}
+.header-scroll {
+    background: rgba(5, 3, 129, 0.4);
+}

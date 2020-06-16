@@ -1,0 +1,96 @@
+.wrapper {
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+
+    .item {
+        // background: #fff;
+        position: relative;
+        height: 100vh;
+        .body {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            position: relative;
+            justify-content: center;
+            img {
+                width: 100%;
+            }
+            .logo {
+                position: absolute;
+                width: 30%;
+                top: 20px;
+                right: 20px;
+            }
+        }
+        .content {
+            z-index: 1000;
+            background: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            .news {
+                flex: 1 0 auto;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                .title {
+                    text-align: center;
+                    margin-bottom: 40px;
+                    font-size: 2.6em;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    letter-spacing: 3px;
+                    color: #fff;
+                    text-shadow: 0px 2px 6px rgb(112, 112, 112);
+                }
+                .text {
+                    width: 90%;
+                    word-wrap: break-word;
+                    text-align: center;
+                    color: #fff;
+                    text-shadow: 0px 0px 8px rgb(0, 0, 0);
+                    font-size: 1.5em;
+                }
+            }
+            .footer {
+                padding: 10px;
+                flex: 0 0 65px;
+                background: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                border-top: 2px ridge rgb(158, 158, 158);
+                .author {
+                    font-weight: 500;
+                    font-size: 1.8em;
+                    color: #5e5e5e;
+                }
+                .date {
+                    font-size: 1.4em;
+                    color: #848484;
+                }
+                img {
+                    height: 50px;
+                }
+            }
+        }
+    }
+}
+
+.slick-prev {
+    background-color: red;
+}

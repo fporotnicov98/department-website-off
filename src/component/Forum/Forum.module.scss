@@ -1,0 +1,89 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.news {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .area{
+        height: 20px;
+    }
+    .themes {
+        width: 100%;
+        margin: 0 auto;
+        .item {
+            padding: 15px;
+            margin-bottom: 10px;
+            min-height: 70px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
+            .content {
+                flex: 1 1 auto;
+                display: flex;
+                align-items: center;
+                .data {
+                    display: inline;
+                    margin-right: 20px;
+                    font-size: 16px;
+                    color: #848484;
+                }
+                p {
+                    display: inline;
+                }
+                .theme {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #000;
+                }
+            }
+            span {
+                flex: 0 0 110px;
+                font-weight: bold;
+            }
+            .more {
+                text-align: right;
+                font-weight: bold;
+                color: #000;
+                flex: 0 0 130px;
+                background-size: cover !important;
+                a {
+                    color: #000;
+                }
+                img {
+                    margin-left: 5px;
+                }
+            }
+            .basket {
+                background: none;
+                padding: 5px;
+                font-size: 1em;
+                margin-left: 20px;
+            }
+        }
+    }
+
+    .btn-add-post {
+        margin: 20px 0 20px 0;
+        width: 299px;
+        height: 50px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 22px;
+        color: #686767;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        &:hover {
+            color: #FFF;
+            background: #050381f5;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.survey {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .item {
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
+        margin: 10px 0 0 0;
+        padding: 5px 30px;
+        font-size: 18px;
+    }
+    .btn-add-post {
+        margin: 20px 0 20px 0;
+        width: 299px;
+        height: 50px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 22px;
+        color: #686767;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        &:hover {
+            color: #fff;
+            background: #050381f5;
+        }
+    }
+}
