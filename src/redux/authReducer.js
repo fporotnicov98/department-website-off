@@ -95,6 +95,7 @@ export const getAuthCode = (email,code) => dispatch => {
         .then(response => {
             dispatch(getAuth(response.data.token))
             dispatch(reset('confirmAuthForm'));
+            dispatch(setOnAuth(false))
             authSuccess()
         })
         .catch(err => {

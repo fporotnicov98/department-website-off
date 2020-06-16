@@ -174,7 +174,7 @@ class Login extends React.Component {
                 : <div className={style['frame-short'] + " " + style['frame']}>
                             <button onClick={e => {
                                 this.close(e)
-                                this.props.setOnReg(false)
+                                this.props.setOnAuth(false)
                             }} className={style["close-auth"]}><span>x</span></button>
                             <div className={style['logo']}><img src={logo} alt="" /></div>
                             <div className={style['confirm']}>
