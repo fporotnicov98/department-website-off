@@ -44,8 +44,8 @@ export const forumAPI = {
     getForumItem(id) {
         return instanse.get(`/Forum/GetForumById/?id=${id}`)
     },
-    addForumMessage(idForum, idAuthor, messageText, messageDate) {
-        return instanse.post(`/Forum/AddForumMessage`, { idForum, idAuthor, messageText, messageDate })
+    addForumMessage(idForum, idAuthor, messageText, messageDate,token) {
+        return instanse.post(`/Forum/AddForumMessage`, { idForum, idAuthor, messageText, messageDate },  { headers: { "Authorization": `Bearer ${token}` }})
     },
     removeForumMessage(id){
         return instanse.delete(`/Forum/DeleteForumMessage/?id=${id}`)   

@@ -78,7 +78,7 @@ export const getCode = (code) => dispatch => {
 export const setLogin = (email, password) => dispatch => {
     authAPI.login(email, password)
         .then(response => {
-            if(response.data.resultCode === 1) dispatch(setOnAuth(true))
+            if(response.data.resultCode === 1 || response.data.resultCode === 2) dispatch(setOnAuth(true))
             if (response.data.resultCode === 0) {
                 dispatch(getAuth(response.data.token))
                 dispatch(reset('loginForm'));
