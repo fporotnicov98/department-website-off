@@ -78,12 +78,12 @@ export const getCode = (code) => dispatch => {
 export const setLogin = (email, password) => dispatch => {
     authAPI.login(email, password)
         .then(response => {
-            dispatch(setOnAuth(true))
-            // if (response.data.resultCode === 0) {
-            //     dispatch(getAuth(response.data.token))
-            //     dispatch(reset('loginForm'));
-            //     authSuccess()
-            // }
+            if(response.data.resultCode === 1) dispatch(setOnAuth(true))
+            if (response.data.resultCode === 0) {
+                dispatch(getAuth(response.data.token))
+                dispatch(reset('loginForm'));
+                authSuccess()
+            }
         })
         .catch(err => {
             authError()
@@ -92,6 +92,15 @@ export const setLogin = (email, password) => dispatch => {
 }
 export const getAuthCode = (email,code) => dispatch => {
     authAPI.getAuthCode(email,code)
+        .then(response => {
+            dispatch(getAuth(response.data.token))
+            dispatch(reset('confirmAuthForm'));
+            authSuccess()
+        })
+        .catch(err => {
+            codeError()
+            dispatch(reset('confirmAuthForm'));
+        })
 }
 export const getAuth = (token) => (dispatch) => {
     authAPI.getAuth(token)

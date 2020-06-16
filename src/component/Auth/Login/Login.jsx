@@ -112,7 +112,7 @@ let ConfirmFormAuth = (props) => {
     )
 }
 
-const ConfirmFormAuthRedux = reduxForm({ form: 'confirmForm' })(ConfirmFormAuth)
+const ConfirmFormAuthRedux = reduxForm({ form: 'confirmAuthForm' })(ConfirmFormAuth)
 
 class Login extends React.Component {
     constructor(props) {
