@@ -15,7 +15,7 @@
         // position: relative;
         position: fixed;
         width: 500px;
-        height: 440px;
+        height: 540px;
         background: rgba(5, 3, 129, 1);
         border-radius: 20px;
         box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -114,7 +114,7 @@
             align-items: center;
             position: relative;
             left: 500px;
-            top: -336px;
+            top: -426px;
             opacity: 0;
             transition: opacity 0s ease, transform 0s ease;
             .title {
@@ -254,7 +254,7 @@
         }
     }
     .frame-long {
-        height: 525px;
+        height: 540px;
     }
     .frame-short {
         height: 350px;

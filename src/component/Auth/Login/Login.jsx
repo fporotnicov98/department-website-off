@@ -86,7 +86,7 @@ let ConfirmForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={style['form']}>
             <span className={style['error']}>{props.error}</span>
-            <label htmlFor="code">Вам на почту был отправлен код подтверждения. Введите его в поле ниже.</label>
+            <label htmlFor="code">Вам на почту был отправлен код для подтверждения регистрации. Введите его в поле ниже.</label>
             <Field
                 name='code'
                 component='input'
@@ -99,6 +99,25 @@ let ConfirmForm = (props) => {
     )
 }
 const ConfirmFormRedux = reduxForm({ form: 'confirmForm' })(ConfirmForm)
+
+let ConfirmFormAuth = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit} className={style['form']}>
+            <span className={style['error']}>{props.error}</span>
+            <label htmlFor="code">Вам на почту был отправлен код для подтверждения входа. Введите его в поле ниже.</label>
+            <Field
+                name='code'
+                component='input'
+                type='text'
+                required='required'
+                id='code'
+            />
+            <button className={style['logup']} type="submit" ><span>Подтвердить</span></button>
+        </form>
+    )
+}
+
+const ConfirmFormAuthRedux = reduxForm({ form: 'confirmForm' })(ConfirmFormAuth)
 
 class Login extends React.Component {
     constructor(props) {
@@ -168,7 +187,8 @@ class Login extends React.Component {
 const mapStateToProps = state => {
     return {
         isAuth: state.auth.isAuth,
-        onReg: state.auth.onReg
+        onReg: state.auth.onReg,
+        isVerified: state.auth.isVerified
     }
 }
 
