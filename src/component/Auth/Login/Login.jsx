@@ -4,8 +4,8 @@ import logo from './../../../asets/image/logo.png'
 import Recaptcha from 'react-recaptcha'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form';
-import { sendEmail, setLogin, getCode, setOnReg, setVerified } from '../../../redux/authReducer'
-import { varificationError } from "../../confirmForms/errorConfirm";
+import { sendEmail, setLogin, getCode, setOnReg,setOnAuth,setTempEmail,getAuthCode} from '../../../redux/authReducer'
+
 
 
 let LoginForm = (props) => {
@@ -27,11 +27,6 @@ let LoginForm = (props) => {
                 required='required'
                 id='password'
             />
-            <Recaptcha
-                sitekey="6LcOhKUZAAAAAF6f6PzthhZur4QFMJJStGKyUeoy"
-                render="explicit"
-                verifyCallback={props.setVerified(true)}
-            />,
             <span className={style['error']}>{props.error}</span>
             <button className={style['login']} type="submit" ><span>Войти</span></button>
         </form>
@@ -133,20 +128,23 @@ class Login extends React.Component {
         this.props.sendEmail(formData.email, formData.password, formData.fio);
     }
     onSubmitAuth = (formData) => {
-        this.props.isVerified === true
-            ? this.props.setLogin(formData.email, formData.password)
-            : varificationError()
+        this.props.setLogin(formData.email, formData.password)
+        this.props.setTempEmail(formData.email)
     }
     onSubmitConfirm = formData => {
         this.props.getCode(formData.code)
+    }
+    onSubmitAuthConfirm = formData => {
+        this.props.getAuthCode(this.props.tempEmail,formData.code)
     }
     render() {
         if (this.props.isOpen === false) return null;
         if (this.props.isAuth === true) return null;
         return (
             <div className={style['bg']}>
-                {
-                    !this.props.onReg
+                {!this.props.onAuth
+                
+                   ? !this.props.onReg
                         ? <div className={this.state.isActive ? style['frame'] + " " + style['frame-long'] : style['frame']}>
                             <button onClick={e => this.close(e)} className={style["close-auth"]}><span>x</span></button>
                             <div className={style['logo']}><img src={logo} alt="" /></div>
@@ -172,7 +170,19 @@ class Login extends React.Component {
                                 <ConfirmFormRedux onSubmit={this.onSubmitConfirm} />
                             </div>
                         </div>
-                }
+                
+                : <div className={style['frame-short'] + " " + style['frame']}>
+                            <button onClick={e => {
+                                this.close(e)
+                                this.props.setOnReg(false)
+                            }} className={style["close-auth"]}><span>x</span></button>
+                            <div className={style['logo']}><img src={logo} alt="" /></div>
+                            <div className={style['confirm']}>
+                                <div className={style['title']}>Подтверждение входа</div>
+                                <ConfirmFormAuthRedux onSubmit={this.onSubmitAuthConfirm} />
+                            </div>
+                        </div>
+    }
             </div >
         )
     }
@@ -188,8 +198,9 @@ const mapStateToProps = state => {
     return {
         isAuth: state.auth.isAuth,
         onReg: state.auth.onReg,
-        isVerified: state.auth.isVerified
+        tempEmail:state.auth.tempEmail,
+        onAuth: state.auth.onAuth
     }
 }
 
-export default connect(mapStateToProps, { setLogin, sendEmail, getCode, setOnReg, setVerified })(Login);
+export default connect(mapStateToProps, { setLogin, sendEmail, getCode, setOnReg,setOnAuth,setTempEmail,getAuthCode })(Login);

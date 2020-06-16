@@ -65,6 +65,9 @@ export const authAPI = {
     getAuth(token) {
         return instanse.get(`/Auth/Authorization`, { headers: { "Authorization": `Bearer ${token}` } })
     },
+    getAuthCode(email,code){
+        return instanse.get(`/Auth/ConfirmAuth?code=${code}&&email=${email}`)
+    }
 }
 
 export const userAPI = {
